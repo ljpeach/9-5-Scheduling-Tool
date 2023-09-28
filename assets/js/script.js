@@ -6,8 +6,9 @@ var currentDay = -1;
 
 $(function () {
   //Event listener for save button. Navigate from button to text field
-  $("#calendar").on("click", ".fa-save", function (event) {
-    localStorage.setItem($(event.target).parent().parent().attr("id"), $(event.target).parent().parent().children().eq(1).val())
+  $("#calendar").on("click", ".saveBtn", function (event) {
+    var timeblock = $(event.target).parents(".time-block");
+    localStorage.setItem(timeblock.attr("id"), timeblock.children(".description").val());
   });
   //Wrapper for the functions that update the timeblock formatting and set the current day.
   //Both update according to time, so makes sense to put them in same interval.
